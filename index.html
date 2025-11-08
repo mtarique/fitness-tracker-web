@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #007bff 0%, #00c6ff 100%);
+            color: white;
+            padding: 88px 0;
+        }
+
+        .hero-form {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm py-2 mb-3-">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="#">
+                <!-- <img src="https://via.placeholder.com/40" alt="Logo" class="me-2" /> -->
+                FitnessMonitoringApp
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu Items -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sign In</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-primary px-3" href="#">Sign Up</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center" id="track-bmi">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Hero Text -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="display-5 fw-bold">Track Your Health & Stay Fit</h1>
+                    <p class="lead mt-3">
+                        Enter your age, weight, and height to get personalized fitness insights and health
+                        recommendations.
+                    </p>
+                </div>
+
+                <!-- Hero Form -->
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="hero-form text-dark">
+                        <h5 class="mb-4 fw-semibold text-dark">Check Your Fitness Stats</h5>
+                        <form id="track">
+                            <div class="mb-3">
+                                <label for="age" class="form-label fw-semibold small">Age (years)</label>
+                                <input type="number" class="form-control" id="age" placeholder="Enter your age"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="weight" class="form-label fw-semibold small">Weight (kg)</label>
+                                <input type="number" class="form-control" id="weight" placeholder="Enter your weight"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="height" class="form-label fw-semibold small">Height (cm)</label>
+                                <input type="number" class="form-control" id="height" placeholder="Enter your height"
+                                    required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mt-2">Calculate BMI</button>
+                        </form>
+
+                        <div id="bmiResult"></div>
+                        <div id="bmiTip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=1200&q=80" alt="Fitness and health tracking"
+                        class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="fw-bold mb-3">About Our Fitness & Health Tracker</h2>
+                    <p class="text-muted">
+                        Welcome to <strong>FitTrack</strong> — your smart health companion designed to help you
+                        understand your body, set realistic goals, and build a healthier lifestyle.
+                        Whether you want to track your BMI, manage your weight, or simply stay motivated, FitTrack makes
+                        it simple, personal, and data-driven.
+                    </p>
+                    <p class="text-muted">
+                        By entering just a few details like age, weight, and height, you instantly get your Body Mass
+                        Index (BMI) and a personalized health summary.
+                        Based on your category — underweight, normal, overweight, or obese — our intelligent system
+                        provides practical fitness and nutrition tips tailored to your needs.
+                    </p>
+                    <p class="text-muted">
+                        We believe that small, consistent steps make the biggest difference. That’s why FitTrack helps
+                        you monitor your progress, get AI-powered recommendations, and
+                        make healthier choices every day. No complicated setups, no expensive plans — just simple
+                        insights for real results.
+                    </p>
+                    <a href="#track-bmi" class="btn btn-primary btn-lg mt-3">Calculate Your BMI</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 bg-light">
+        <p class="mb-0">&copy; 2025 HealthTrack. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#track').on("submit", function (event) {
+                event.preventDefault();
+
+                const age = parseFloat($('#age').val());
+                const weight = parseFloat($('#weight').val());
+                const height = parseFloat($('#height').val()) / 100; // convert cm to m
+
+                if (!age || !weight || !height) {
+                    $('#bmiResult')
+                        .removeClass('d-none alert-success')
+                        .addClass('alert-danger')
+                        .html('⚠️ Please fill in all fields correctly.');
+                    return;
+                }
+
+                const bmi = (weight / (height * height)).toFixed(2);
+                let category = '', tip = '', color = '';
+
+                if (bmi < 18.5) {
+                    category = 'Underweight';
+                    tip = 'You may need to gain some healthy weight. Try a balanced diet rich in protein, healthy fats, and whole grains. Avoid skipping meals.';
+                    color = 'info';
+                    icon = '<i class="bi bi-heart-pulse-fill h1 text-warning"></i>';
+                    action = 'Gain weight';
+                } else if (bmi < 24.9) {
+                    category = 'Normal weight';
+                    tip = 'Great job! Maintain your weight by staying active, eating balanced meals, and drinking plenty of water.';
+                    color = 'success';
+                    icon = '<i class="bi bi-heart-pulse-fill h1 text-success"></i>';
+                    action = 'Maintain weight';
+                } else if (bmi < 29.9) {
+                    category = 'Overweight';
+                    tip = 'Try to include daily physical activity like walking or cycling and watch your calorie intake. Small consistent changes can make a big difference.';
+                    color = 'warning';
+                    icon = '<i class="bi bi-heart-pulse-fill h1 text-warning"></i>';
+                    action = 'Loose weight';
+                } else {
+                    category = 'Obese';
+                    tip = 'It might be beneficial to consult a nutritionist or healthcare provider. Focus on reducing processed foods and increasing activity gradually.';
+                    color = 'danger';
+                    icon = '<i class="bi bi-heart-pulse-fill h1 text-danger"></i>';
+                    action = 'Loose weight';
+                }
+
+                // Create a dynamic health prompt
+                const prompt = `I am ${age} years old. My weight is ${weight} kg and height is ${height} cm. My BMI is ${bmi} (${category}). Give me a short health guide and 6 practical tips for diet, exercise, and lifestyle.`;
+
+                // Encode the prompt for URL
+                const encodedPrompt = encodeURIComponent(prompt);
+
+                // Create a Google Search URL (works everywhere)
+                const url = `https://www.google.com/search?q=${encodedPrompt}`;
+
+                Swal.fire({
+                    title: icon + "<br>" + category,
+                    html: `<div class="alert alert-${color} text-start" role="alert">
+                        <strong>Your BMI:</strong> ${bmi}<br>
+                        <strong>Health Tip:</strong> ${tip}
+                        <a href="${url}" target="_blank" class="btn btn-primary">Health Guide</a>
+                    </div>`,
+                    showCloseButton: true,
+                    showCancelButton: true,
+                    focusConfirm: false,
+                    confirmButtonText: `Ok, I will ${action}`,
+                    confirmButtonAriaLabel: `Ok, I will ${action}`,
+                    cancelButtonText: `Close`,
+                    cancelButtonAriaLabel: "Close"
+                });
+            });
+        })
+
+    </script>
+</body>
+
+</html>
