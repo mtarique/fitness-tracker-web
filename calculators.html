@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitnessTracker | Health Calculators</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #007bff 0%, #00c6ff 100%);
+            color: white;
+            padding: 88px 0 60px;
+            margin-top: 60px;
+        }
+
+        .calculator-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            border-radius: 12px;
+            height: 100%;
+        }
+
+        .calculator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .calculator-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #007bff 0%, #00c6ff 100%);
+            border-radius: 12px;
+            color: white;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-white bg-white shadow-sm border-bottom border-light py-2 mb-3-">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="index.html">
+                <img src="logo/logo-dark-crop.png" alt="Logo" class="me-2" width="220" />
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu Items -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#workout-plans">Workouts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="calculators.html">Calculators</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Health Calculators</h1>
+            <p class="lead">
+                Use our comprehensive health calculators to get personalized insights about your fitness and nutrition
+            </p>
+        </div>
+    </section>
+
+    <!-- Calculators Grid -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- BMI Calculator -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card calculator-card shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="calculator-icon mx-auto">
+                                <i class="bi bi-calculator"></i>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3">BMI Calculator</h5>
+                            <p class="text-muted small mb-4">
+                                Calculate your Body Mass Index to understand your weight category and health status
+                            </p>
+                            <a href="index.html#track-bmi" class="btn btn-primary w-100">Calculate BMI</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BMR Calculator -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card calculator-card shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="calculator-icon mx-auto">
+                                <i class="bi bi-fire"></i>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3">BMR Calculator</h5>
+                            <p class="text-muted small mb-4">
+                                Calculate your Basal Metabolic Rate - the number of calories you burn at rest
+                            </p>
+                            <a href="bmr-calculator.html" class="btn btn-primary w-100">Calculate BMR</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TDEE Calculator -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card calculator-card shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="calculator-icon mx-auto">
+                                <i class="bi bi-speedometer2"></i>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3">TDEE Calculator</h5>
+                            <p class="text-muted small mb-4">
+                                Calculate your Total Daily Energy Expenditure including all daily activities
+                            </p>
+                            <a href="tdee-calculator.html" class="btn btn-primary w-100">Calculate TDEE</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Body Fat Calculator -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card calculator-card shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="calculator-icon mx-auto">
+                                <i class="bi bi-heart-pulse"></i>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3">Body Fat Calculator</h5>
+                            <p class="text-muted small mb-4">
+                                Estimate your body fat percentage using the US Navy method or BMI-based calculation
+                            </p>
+                            <a href="body-fat-calculator.html" class="btn btn-primary w-100">Calculate Body Fat</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ideal Weight Calculator -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card calculator-card shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="calculator-icon mx-auto">
+                                <i class="bi bi-bullseye"></i>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3">Ideal Weight Calculator</h5>
+                            <p class="text-muted small mb-4">
+                                Find your healthy weight range based on your height, gender, and body frame
+                            </p>
+                            <a href="ideal-weight-calculator.html" class="btn btn-primary w-100">Calculate Ideal Weight</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Water Intake Calculator -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card calculator-card shadow-sm h-100">
+                        <div class="card-body p-4 text-center">
+                            <div class="calculator-icon mx-auto">
+                                <i class="bi bi-droplet"></i>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3">Water Intake Calculator</h5>
+                            <p class="text-muted small mb-4">
+                                Calculate how much water you should drink daily based on your weight and activity level
+                            </p>
+                            <a href="water-intake-calculator.html" class="btn btn-primary w-100">Calculate Water Intake</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-white border-top shadow-sm text-center">
+        <div class="container">
+            <p class="mb-0 text-muted small">
+                &copy; 2025 <span class="fw-semibold text-dark">FitnessTracker</span>.
+                All rights reserved.<br>
+                Designed & Developed with <span class="text-danger">❤️</span> by <strong>Mahir Alam</strong>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+

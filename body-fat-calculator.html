@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitnessTracker | Body Fat Calculator</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #007bff 0%, #00c6ff 100%);
+            color: white;
+            padding: 88px 0 60px;
+            margin-top: 60px;
+        }
+
+        .hero-form {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-white bg-white shadow-sm border-bottom border-light py-2 mb-3-">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="index.html">
+                <img src="logo/logo-dark-crop.png" alt="Logo" class="me-2" width="220" />
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu Items -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#workout-plans">Workouts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="calculators.html">Calculators</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="display-5 fw-bold mb-3">Body Fat Calculator</h1>
+                    <p class="lead">
+                        Estimate your body fat percentage using the US Navy method. Measure your neck and waist (and hips
+                        for women) to get an accurate estimate.
+                    </p>
+                </div>
+
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="hero-form text-dark">
+                        <h5 class="mb-4 fw-semibold text-dark">
+                            <i class="bi bi-heart-pulse text-primary"></i> Calculate Body Fat
+                        </h5>
+                        <form id="bodyFatForm">
+                            <div class="mb-3">
+                                <label for="gender" class="form-label fw-semibold small">Gender</label>
+                                <select class="form-select" id="gender" required>
+                                    <option value="">Select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="age" class="form-label fw-semibold small">Age (years)</label>
+                                <input type="number" class="form-control" id="age" placeholder="Enter your age" min="1"
+                                    max="120" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="height" class="form-label fw-semibold small">Height (cm)</label>
+                                <input type="number" class="form-control" id="height" step="0.1" min="0"
+                                    placeholder="Enter your height" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="neck" class="form-label fw-semibold small">Neck (cm)</label>
+                                <input type="number" class="form-control" id="neck" step="0.1" min="0"
+                                    placeholder="Measure below the larynx" required>
+                                <small class="text-muted">Measure the circumference just below the larynx</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="waist" class="form-label fw-semibold small">Waist (cm)</label>
+                                <input type="number" class="form-control" id="waist" step="0.1" min="0"
+                                    placeholder="Measure at the navel level" required>
+                                <small class="text-muted">Measure at the navel level (or narrowest point)</small>
+                            </div>
+                            <div class="mb-3" id="hipField" style="display: none;">
+                                <label for="hip" class="form-label fw-semibold small">Hip (cm)</label>
+                                <input type="number" class="form-control" id="hip" step="0.1" min="0"
+                                    placeholder="Measure at the widest point" required>
+                                <small class="text-muted">Measure at the widest point of the hips</small>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mt-2">Calculate Body Fat</button>
+                        </form>
+
+                        <div id="bodyFatResult"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Information Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="fw-bold mb-4">Understanding Body Fat Percentage</h2>
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3"><i class="bi bi-info-circle text-primary"></i> What is Body Fat
+                                Percentage?</h5>
+                            <p class="text-muted">
+                                Body fat percentage is the proportion of fat to total body weight. It's a better indicator
+                                of fitness than BMI alone, as it distinguishes between fat mass and lean body mass.
+                            </p>
+
+                            <h5 class="fw-bold mb-3 mt-4"><i class="bi bi-rulers text-primary"></i> How to Measure</h5>
+                            <p class="text-muted mb-2">For accurate results, use a flexible measuring tape:</p>
+                            <ul class="text-muted">
+                                <li><strong>Neck:</strong> Measure just below the larynx (Adam's apple)</li>
+                                <li><strong>Waist:</strong> Measure at the navel level for men, or narrowest point for
+                                    women</li>
+                                <li><strong>Hip (women only):</strong> Measure at the widest point of the hips</li>
+                            </ul>
+
+                            <h5 class="fw-bold mb-3 mt-4"><i class="bi bi-list-check text-success"></i> Body Fat
+                                Categories</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <strong class="text-muted">Men:</strong>
+                                    <ul class="text-muted small">
+                                        <li>Essential: 2-5%</li>
+                                        <li>Athletes: 6-13%</li>
+                                        <li>Fitness: 14-17%</li>
+                                        <li>Average: 18-24%</li>
+                                        <li>Obese: 25%+</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong class="text-muted">Women:</strong>
+                                    <ul class="text-muted small">
+                                        <li>Essential: 10-13%</li>
+                                        <li>Athletes: 14-20%</li>
+                                        <li>Fitness: 21-24%</li>
+                                        <li>Average: 25-31%</li>
+                                        <li>Obese: 32%+</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-white border-top shadow-sm text-center">
+        <div class="container">
+            <p class="mb-0 text-muted small">
+                &copy; 2025 <span class="fw-semibold text-dark">FitnessTracker</span>.
+                All rights reserved.<br>
+                Designed & Developed with <span class="text-danger">❤️</span> by <strong>Mahir Alam</strong>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Show/hide hip field based on gender
+            $('#gender').on('change', function () {
+                if ($(this).val() === 'female') {
+                    $('#hipField').show();
+                    $('#hip').attr('required', true);
+                } else {
+                    $('#hipField').hide();
+                    $('#hip').removeAttr('required');
+                }
+            });
+
+            $('#bodyFatForm').on("submit", function (event) {
+                event.preventDefault();
+
+                const gender = $('#gender').val();
+                const age = parseFloat($('#age').val());
+                const height = parseFloat($('#height').val());
+                const neck = parseFloat($('#neck').val());
+                const waist = parseFloat($('#waist').val());
+                const hip = gender === 'female' ? parseFloat($('#hip').val()) : 0;
+
+                if (!gender || !age || !height || !neck || !waist || (gender === 'female' && !hip)) {
+                    $('#bodyFatResult')
+                        .html('<div class="alert alert-danger mt-3">⚠️ Please fill in all fields correctly.</div>');
+                    return;
+                }
+
+                let bodyFat;
+                let category;
+                let categoryColor;
+
+                // US Navy Body Fat Formula
+                if (gender === 'male') {
+                    bodyFat = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+                } else {
+                    bodyFat = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
+                }
+
+                bodyFat = Math.max(0, Math.min(100, bodyFat));
+                bodyFat = parseFloat(bodyFat.toFixed(1));
+
+                // Determine category
+                if (gender === 'male') {
+                    if (bodyFat < 6) {
+                        category = 'Essential Fat';
+                        categoryColor = 'info';
+                    } else if (bodyFat < 14) {
+                        category = 'Athletes';
+                        categoryColor = 'success';
+                    } else if (bodyFat < 18) {
+                        category = 'Fitness';
+                        categoryColor = 'success';
+                    } else if (bodyFat < 25) {
+                        category = 'Average';
+                        categoryColor = 'warning';
+                    } else {
+                        category = 'Obese';
+                        categoryColor = 'danger';
+                    }
+                } else {
+                    if (bodyFat < 14) {
+                        category = 'Essential Fat';
+                        categoryColor = 'info';
+                    } else if (bodyFat < 21) {
+                        category = 'Athletes';
+                        categoryColor = 'success';
+                    } else if (bodyFat < 25) {
+                        category = 'Fitness';
+                        categoryColor = 'success';
+                    } else if (bodyFat < 32) {
+                        category = 'Average';
+                        categoryColor = 'warning';
+                    } else {
+                        category = 'Obese';
+                        categoryColor = 'danger';
+                    }
+                }
+
+                const resultHtml = `
+                    <div class="result-card mt-3">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-heart-pulse text-primary"></i> Your Body Fat</h5>
+                        <div class="text-center mb-3">
+                            <h2 class="display-4 fw-bold text-primary mb-2">${bodyFat}%</h2>
+                            <span class="badge bg-${categoryColor} fs-6">${category}</span>
+                        </div>
+                        <div class="alert alert-${categoryColor} mb-0">
+                            <small>
+                                <strong>Category:</strong> ${category}<br>
+                                This is an estimate using the US Navy method. For the most accurate measurement, 
+                                consider professional body composition analysis.
+                            </small>
+                        </div>
+                    </div>
+                `;
+
+                $('#bodyFatResult').html(resultHtml);
+            });
+        });
+    </script>
+</body>
+
+</html>
+

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitnessTracker | TDEE Calculator</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #007bff 0%, #00c6ff 100%);
+            color: white;
+            padding: 88px 0 60px;
+            margin-top: 60px;
+        }
+
+        .hero-form {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-white bg-white shadow-sm border-bottom border-light py-2 mb-3-">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="index.html">
+                <img src="logo/logo-dark-crop.png" alt="Logo" class="me-2" width="220" />
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu Items -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#workout-plans">Workouts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="calculators.html">Calculators</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="display-5 fw-bold mb-3">TDEE Calculator</h1>
+                    <p class="lead">
+                        Calculate your Total Daily Energy Expenditure - the total number of calories you burn per day
+                        including all activities.
+                    </p>
+                </div>
+
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="hero-form text-dark">
+                        <h5 class="mb-4 fw-semibold text-dark">
+                            <i class="bi bi-speedometer2 text-primary"></i> Calculate Your TDEE
+                        </h5>
+                        <form id="tdeeForm">
+                            <div class="mb-3">
+                                <label for="gender" class="form-label fw-semibold small">Gender</label>
+                                <select class="form-select" id="gender" required>
+                                    <option value="">Select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="age" class="form-label fw-semibold small">Age (years)</label>
+                                <input type="number" class="form-control" id="age" placeholder="Enter your age" min="1"
+                                    max="120" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="weight" class="form-label fw-semibold small">Weight (kg)</label>
+                                <input type="number" class="form-control" id="weight" step="0.1" min="0"
+                                    placeholder="Enter your weight" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="height" class="form-label fw-semibold small">Height (cm)</label>
+                                <input type="number" class="form-control" id="height" step="0.1" min="0"
+                                    placeholder="Enter your height" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="activity" class="form-label fw-semibold small">Activity Level</label>
+                                <select class="form-select" id="activity" required>
+                                    <option value="">Select activity level</option>
+                                    <option value="1.2">Sedentary (little or no exercise)</option>
+                                    <option value="1.375">Lightly active (light exercise 1-3 days/week)</option>
+                                    <option value="1.55">Moderately active (moderate exercise 3-5 days/week)</option>
+                                    <option value="1.725">Very active (hard exercise 6-7 days/week)</option>
+                                    <option value="1.9">Extra active (very hard exercise & physical job)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mt-2">Calculate TDEE</button>
+                        </form>
+
+                        <div id="tdeeResult"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Information Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="fw-bold mb-4">Understanding TDEE</h2>
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3"><i class="bi bi-info-circle text-primary"></i> What is TDEE?</h5>
+                            <p class="text-muted">
+                                Total Daily Energy Expenditure (TDEE) is the total number of calories you burn in a day,
+                                including your Basal Metabolic Rate (BMR) plus all physical activities. TDEE is crucial for
+                                understanding how many calories you need to maintain, lose, or gain weight.
+                            </p>
+
+                            <h5 class="fw-bold mb-3 mt-4"><i class="bi bi-calculator text-primary"></i> How is TDEE
+                                Calculated?</h5>
+                            <p class="text-muted mb-2">TDEE = BMR × Activity Multiplier</p>
+                            <p class="text-muted mb-2">Activity multipliers:</p>
+                            <ul class="text-muted">
+                                <li><strong>1.2</strong> - Sedentary (little or no exercise)</li>
+                                <li><strong>1.375</strong> - Lightly active (light exercise 1-3 days/week)</li>
+                                <li><strong>1.55</strong> - Moderately active (moderate exercise 3-5 days/week)</li>
+                                <li><strong>1.725</strong> - Very active (hard exercise 6-7 days/week)</li>
+                                <li><strong>1.9</strong> - Extra active (very hard exercise & physical job)</li>
+                            </ul>
+
+                            <h5 class="fw-bold mb-3 mt-4"><i class="bi bi-bullseye text-success"></i> Using TDEE for
+                                Goals</h5>
+                            <ul class="text-muted">
+                                <li><strong>Maintain weight:</strong> Eat calories equal to your TDEE</li>
+                                <li><strong>Lose weight:</strong> Eat 300-500 calories less than your TDEE</li>
+                                <li><strong>Gain weight:</strong> Eat 300-500 calories more than your TDEE</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-white border-top shadow-sm text-center">
+        <div class="container">
+            <p class="mb-0 text-muted small">
+                &copy; 2025 <span class="fw-semibold text-dark">FitnessTracker</span>.
+                All rights reserved.<br>
+                Designed & Developed with <span class="text-danger">❤️</span> by <strong>Mahir Alam</strong>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#tdeeForm').on("submit", function (event) {
+                event.preventDefault();
+
+                const gender = $('#gender').val();
+                const age = parseFloat($('#age').val());
+                const weight = parseFloat($('#weight').val());
+                const height = parseFloat($('#height').val());
+                const activity = parseFloat($('#activity').val());
+
+                if (!gender || !age || !weight || !height || !activity) {
+                    $('#tdeeResult')
+                        .html('<div class="alert alert-danger mt-3">⚠️ Please fill in all fields correctly.</div>');
+                    return;
+                }
+
+                // Calculate BMR using Mifflin-St Jeor Equation
+                let bmr;
+                if (gender === 'male') {
+                    bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+                } else {
+                    bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+                }
+
+                // Calculate TDEE
+                const tdee = Math.round(bmr * activity);
+                const bmrRounded = Math.round(bmr);
+
+                const activityLevels = {
+                    1.2: 'Sedentary',
+                    1.375: 'Lightly Active',
+                    1.55: 'Moderately Active',
+                    1.725: 'Very Active',
+                    1.9: 'Extra Active'
+                };
+
+                const loseWeight = Math.round(tdee - 500);
+                const gainWeight = Math.round(tdee + 500);
+
+                const resultHtml = `
+                    <div class="result-card mt-3">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-speedometer2 text-primary"></i> Your Results</h5>
+                        
+                        <div class="text-center mb-4">
+                            <p class="text-muted small mb-1">Basal Metabolic Rate (BMR)</p>
+                            <h3 class="fw-bold text-info mb-0">${bmrRounded} <small class="text-muted">cal/day</small></h3>
+                        </div>
+
+                        <div class="text-center mb-4">
+                            <p class="text-muted small mb-1">Total Daily Energy Expenditure (TDEE)</p>
+                            <h2 class="display-5 fw-bold text-primary mb-2">${tdee}</h2>
+                            <p class="text-muted mb-0">calories per day</p>
+                            <small class="text-muted">(${activityLevels[activity]})</small>
+                        </div>
+
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <div class="bg-white rounded p-2 text-center">
+                                    <small class="text-muted d-block">To Lose Weight</small>
+                                    <strong class="text-success">${loseWeight} cal</strong>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-white rounded p-2 text-center">
+                                    <small class="text-muted d-block">To Gain Weight</small>
+                                    <strong class="text-danger">${gainWeight} cal</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mb-0">
+                            <small>
+                                <strong>Tip:</strong> To lose weight, consume 300-500 calories less than your TDEE. 
+                                To gain weight, consume 300-500 calories more than your TDEE.
+                            </small>
+                        </div>
+                    </div>
+                `;
+
+                $('#tdeeResult').html(resultHtml);
+            });
+        });
+    </script>
+</body>
+
+</html>
+
